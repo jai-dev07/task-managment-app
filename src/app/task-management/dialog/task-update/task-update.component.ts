@@ -2,6 +2,7 @@ import { Component, OnInit,Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef ,MatDialog} from '@angular/material/dialog';
 import { ITasks } from '../../models/tasks.model';
+import { Priority, Status } from '../../models/task.enum';
 @Component({
   selector: 'app-task-update',
   templateUrl: './task-update.component.html',
@@ -9,6 +10,30 @@ import { ITasks } from '../../models/tasks.model';
 })
 export class TaskUpdateComponent implements OnInit {
   taskUpdateForm!:FormGroup;
+  status = [
+    {
+    value:"In Progress",
+    viewValue:Status.inProgress
+  },
+  {
+    value:"Completed",
+    viewValue:Status.completed
+  }
+]
+priorities = [
+  {
+    value:"High",
+    viewValue:Priority.high
+  },
+  {
+    value:"Medium",
+    viewValue:Priority.medium
+  },
+  {
+    value:"Low",
+    viewValue:Priority.low
+  }
+]
   constructor(
     private fb:FormBuilder,
     public dialogRef: MatDialogRef<TaskUpdateComponent>,

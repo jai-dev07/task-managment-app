@@ -17,17 +17,29 @@
                 </div>
                 <div class="col-4">
                     <mat-form-field>
-                        <mat-label>Status</mat-label>
-                        <input matInput formControlName="status">
-                    </mat-form-field>
+                        <mat-label>Priority</mat-label>
+                        <!-- (selectionChange)="filterChange($event)" -->
+                        <mat-select formControlName="priority" >
+                          <mat-option  
+                           *ngFor="let priority of priorities" [value]="priority.value">
+                            {{priority.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
                 </div>
             </div>
             <div class="col-12 d-flex gap-2">
                 <div class="col-4">
                     <mat-form-field>
-                        <mat-label>priority</mat-label>
-                        <input matInput formControlName="priority">
-                    </mat-form-field>
+                        <mat-label>Status</mat-label>
+                        <!-- (selectionChange)="filterChange($event)" -->
+                        <mat-select formControlName="status" >
+                          <mat-option  
+                           *ngFor="let stat of status" [value]="stat.value">
+                            {{stat.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
                 </div>
                 <div class="col-4">
                     <mat-form-field>
