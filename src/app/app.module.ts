@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { TaskUpdateComponent } from './src/app/task-management/dialog/task-update/task-update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent
+    NavBarComponent,
+    TaskUpdateComponent
   ],
   imports: [
     SharedModule,

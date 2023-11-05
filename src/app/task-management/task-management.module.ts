@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TaskUpdateComponent } from './task-update/task-update.component';
+import { TaskUpdateComponent } from './dialog/task-update/task-update.component';
 import { TaskViewComponent } from './task-view/task-view.component';
 import { TaskManagementRoutingModule } from './task-management.routing.module';
 import { SharedModule } from '../shared/shared.module';

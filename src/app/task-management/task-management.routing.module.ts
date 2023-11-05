@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TaskUpdateComponent } from './task-update/task-update.component';
+import { TaskUpdateComponent } from './dialog/task-update/task-update.component';
 import { TaskViewComponent } from './task-view/task-view.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
@@ -14,7 +14,10 @@ const routes: Routes = [
       component:DashboardComponent
     },
    
-
+    {
+      path:'view/:id',
+      component:TaskViewComponent
+    },
     {
       path:'update',
       component:TaskUpdateComponent

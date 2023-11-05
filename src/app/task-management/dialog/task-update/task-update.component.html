@@ -1,0 +1,44 @@
+<h1 mat-dialog-title> Update task</h1>
+<div mat-dialog-content>
+    <div class="row">
+        <form [formGroup]="taskUpdateForm">
+            <div class="col-12 d-flex gap-2">
+                <div class="col-4">
+                    <mat-form-field>
+                        <mat-label>Title</mat-label>
+                        <input matInput formControlName="title">
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field>
+                        <mat-label>Description</mat-label>
+                        <input matInput formControlName="description">
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field>
+                        <mat-label>Status</mat-label>
+                        <input matInput formControlName="status">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-12 d-flex gap-2">
+                <div class="col-4">
+                    <mat-form-field>
+                        <mat-label>priority</mat-label>
+                        <input matInput formControlName="priority">
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field>
+                        <mat-label>Due date</mat-label>
+                        <input matInput formControlName="dueDate">
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Cancel</button>
+        <button mat-button [mat-dialog-close]="taskUpdateForm.value" cdkFocusInitial>Submit</button>
+    </div>

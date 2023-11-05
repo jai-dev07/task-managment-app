@@ -4,3 +4,6 @@
 .content{
     height:100vh;
 }
+mat-header-cell, mat-cell {
+    justify-content: center;
+  }

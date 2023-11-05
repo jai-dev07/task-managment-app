@@ -31,7 +31,8 @@ import { DragDropModule} from '@angular/cdk/drag-drop';
     MatSidenavModule,
     MatIconModule,
     MatTableModule,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule
 
   ],
   exports:[
@@ -47,7 +48,8 @@ import { DragDropModule} from '@angular/cdk/drag-drop';
     MatSidenavModule,
     MatIconModule,
     MatTableModule,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule
     
   ]
 })
