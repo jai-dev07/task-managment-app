@@ -1,0 +1,18 @@
+.heading>h2 {
+    display: block;
+    text-align: end;
+
+}
+
+.heading_data>h2 {
+    display: block;
+    text-align: start;
+}
+
+.main {
+    position: relative;
+    width: 60%;
+    height: 100vh;
+    margin: auto;
+    border: 1px solid green;
+}

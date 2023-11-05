@@ -1,7 +1,21 @@
-<div class="row border">
-    <div class="col-12">
-        <div>
-            <Label> Title : {{'Title'}}</Label>
+<div class="row border" style="position: relative;">
+    <div class="col-12 d-flex justify-content-center main" *ngIf="taskDetail">
+        <div class="col-6 heading" style="white-space: pre" >
+            <h2> Title : </h2>
+            <h2> Description : </h2>
+            <h2> Status : </h2>
+            <h2> Priority : </h2>
+            <h2> Due date : </h2>
         </div>
+        <div class="col-6 heading_data" >
+            <h2> {{taskDetail.title}}</h2>
+            <h2> {{taskDetail.description}}</h2>
+            <h2> {{taskDetail.status}}</h2>
+            <h2> {{taskDetail.priority}}</h2>
+            <h2> {{taskDetail.dueDate}}</h2>
+        </div>
+    </div>
+    <div *ngIf="!taskDetail">
+        NO DATA FOUND
     </div>
 </div>

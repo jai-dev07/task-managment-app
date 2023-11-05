@@ -10,10 +10,33 @@
                 </div>
             </div> -->
       <div class="col-11 content border">
-        <div class="d-flex justify-content-center align-items-center p-3">
+        <div class=" col-12 d-flex justify-content-center align-items-center p-3">
+          <div class="col-6">
           <h2 class="text-danger m-0" style="letter-spacing:1px; height:inherit">
             Todos
           </h2>
+        </div>
+        <form [formGroup]="searchForm">
+        <div class="col-6 d-flex gap-2">
+            <div>
+              <mat-form-field>
+              <mat-label>Search</mat-label>
+              <input matInput formControlName="searchText" (keyup)="applyFilter($event)">
+              </mat-form-field>
+            </div>
+          <!-- <div>
+            <mat-form-field>
+              <mat-label>Filter By</mat-label>
+              <mat-select formControlName="searchOption" (selectionChange)="filterChange($event)">
+                <mat-option  
+                 *ngFor="let option of options" [value]="option.value">
+                  {{option.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div> -->
+        </div>
+      </form>
         </div>
         <hr class="m-auto w-80 text-center" style="width:80%">
         <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8" cdkDropList
@@ -47,29 +70,22 @@
           </ng-container>
           <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
-            <mat-cell *matCellDef="let row" class="gap-2"> 
+            <mat-cell *matCellDef="let row let i = index" class="gap-2"> 
               <mat-icon color="accent"(click)="view(row.id)">remove_red_eye</mat-icon>
               <mat-icon color="accent" (click)="edit(row)">edit</mat-icon>
-              <mat-icon color="accent"(click)="delete(row)">
+              <mat-icon color="accent"(click)="markAsComplete(i,row.status)">
                 {{row.status === Status.completed ? 'check_circle':'check_circle_outline'}}</mat-icon>
-              <mat-icon color="primary" (click)="delete(row)">delete</mat-icon>
+              <mat-icon color="accent" (click) ="delete(row)">delete</mat-icon>
          
               <!-- <mat-icon color="accent"(click)="delete(row)">check_circle</mat-icon> -->
               
              </mat-cell>
             
           </ng-container>
-          <!-- <ng-container matColumnDef="actions">
-            <mat-header-cell > Actions </mat-header-cell>
-            <mat-cell *matCellDef="let row" >
-                 <button mat-raised-button >Edit</button> 
-            </mat-cell>
-        </ng-container>  -->
-          <!-- Header and Row Declarations -->
+
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
           <mat-row *matRowDef="let row; columns:displayedColumns;" cdkDrag [cdkDragData]="row"></mat-row>
-          <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns">
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+         
 
         </mat-table>
       </div>

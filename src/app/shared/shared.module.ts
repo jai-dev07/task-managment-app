@@ -14,6 +14,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import { DragDropModule} from '@angular/cdk/drag-drop';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { DragDropModule} from '@angular/cdk/drag-drop';
     MatSidenavModule,
     MatIconModule,
     MatTableModule,
+    MatSelectModule,
     DragDropModule,
     MatDialogModule
 
@@ -47,6 +49,7 @@ import { DragDropModule} from '@angular/cdk/drag-drop';
     MatInputModule,
     MatSidenavModule,
     MatIconModule,
+    MatSelectModule,
     MatTableModule,
     DragDropModule,
     MatDialogModule

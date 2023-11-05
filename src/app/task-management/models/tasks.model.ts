@@ -1,6 +1,6 @@
 import { Priority, Status } from "./task.enum";
 
-export interface ITasks {
+export interface ITasks   {
     id?:number;
     position?: number;
     title?: string;

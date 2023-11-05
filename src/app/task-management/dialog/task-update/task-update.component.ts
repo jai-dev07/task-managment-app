@@ -15,6 +15,7 @@ export class TaskUpdateComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: ITasks,
   ) {
     this.taskUpdateForm=new FormGroup({
+      id:new FormControl(''),
       title: new FormControl(''),
       description: new FormControl(''),
       priority: new FormControl(''),
@@ -26,6 +27,7 @@ export class TaskUpdateComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.data);
     this.taskUpdateForm.patchValue({
+      id:this.data.id,
       title:this.data.title,
       description:this.data.description,
       status:this.data.status,
