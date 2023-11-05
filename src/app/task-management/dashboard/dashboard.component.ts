@@ -18,27 +18,27 @@ import { TasksDataService } from 'src/app/tasks-data.service';
 export class DashboardComponent implements OnInit {
   Priority = Priority;
   Status = Status;
-  options=[
+  options = [
     {
-      viewValue:"Title",
-      value:"title"
+      viewValue: "Title",
+      value: "title"
     },
     {
-      viewValue:"Status",
-      value:"status"
+      viewValue: "Status",
+      value: "status"
     },
     {
-      viewValue:"Priority",
-      value:"priority"
+      viewValue: "Priority",
+      value: "priority"
     },
     {
-    viewValue:"Due date",
-    value:"dueDate"
+      viewValue: "Due date",
+      value: "dueDate"
     }
   ]
-  searchForm:FormGroup;
+  searchForm: FormGroup;
   displayedColumns: string[] = ['position', 'title', 'description', 'status', 'priority', 'dueDate', 'actions'];
-  
+
   // ELEMENT_DATA : ITasks[] = [
   //   {
   //     id: 2,
@@ -54,7 +54,7 @@ export class DashboardComponent implements OnInit {
   //     position: 2,
   //     title: "Test task 2",
   //     description: "Description of task 2",
-      // status: Status.inProgress,
+  // status: Status.inProgress,
   //     priority: Priority.medium,
   //     dueDate: "10-11-2023"
   //   },
@@ -64,32 +64,32 @@ export class DashboardComponent implements OnInit {
   //     title: "Test task 3",
   //     description: "Description of task 3",
   //     status: Status.completed,
-      // priority: Priority.medium,
+  // priority: Priority.medium,
   //     dueDate: "17-11-2023"
   //   }
 
   // ];
-  dataSource!:MatTableDataSource<ITasks> ;
+  dataSource!: MatTableDataSource<ITasks>;
   //  = new MatTableDataSource();
   @ViewChild('table', { static: true }) table?: MatTable<ITasks>;
 
-  constructor(public dialog: MatDialog,private router:Router , private taskDataService:TasksDataService) {
+  constructor(public dialog: MatDialog, private router: Router, private taskDataService: TasksDataService) {
     this.searchForm = new FormGroup({
-      searchText : new FormControl(''),
+      searchText: new FormControl(''),
       searchOption: new FormControl('')
     })
   }
   ngOnInit(): void {
-    this.taskDataService.getAlltasks().subscribe((res : ITasks[])=>{
+    this.taskDataService.getAlltasks().subscribe((res: ITasks[]) => {
       console.log(res);
       this.dataSource = new MatTableDataSource();
       this.dataSource.data = res
     })
   }
-  filterChange(option:any) {
+  filterChange(option: any) {
 
     console.log(option);
-    
+
   }
   dragDisabled = true;
   // CdkDragDrop<MatTableDataSource<ITasks>
@@ -104,44 +104,55 @@ export class DashboardComponent implements OnInit {
   edit(data: ITasks): void {
     this.openDialog(data);
     console.log(data);
-
   }
-  view(id:number): void {
-      this.router.navigate(['view/'+id])
+  create() {
+    this.openDialog();
+  }
+  view(id: number): void {
+    this.router.navigate(['view/' + id])
   }
   delete(data: ITasks) {
     // this.dataSource.data.splice(this.dataSource.data.indexOf(data),1)
-    this.dataSource.data = this.dataSource.data.filter( res => res.id !== data.id)
+    this.dataSource.data = this.dataSource.data.filter(res => res.id !== data.id)
 
   }
-      applyFilter(filterValue: Event ) {
-       console.log("filter");
-       let filterVal = (filterValue.target as HTMLInputElement).value;
-       filterVal = filterVal.trim(); 
-       filterVal = filterVal.toLowerCase();
-        this.dataSource.filter = filterVal;
-      }
-      markAsComplete(index: number,currentStatus:string) {
-        if(currentStatus == Status.inProgress ) {
-        this.dataSource.data[index].status = Status.completed
-        }
-      }
-   openDialog(data: ITasks): void {
+  applyFilter(filterValue: Event) {
+    console.log("filter");
+    let filterVal = (filterValue.target as HTMLInputElement).value;
+    filterVal = filterVal.trim();
+    filterVal = filterVal.toLowerCase();
+    this.dataSource.filter = filterVal;
+  }
+  markAsComplete(index: number, currentStatus: string) {
+    if (currentStatus == Status.inProgress) {
+      this.dataSource.data[index].status = Status.completed
+    }
+  }
+  openDialog(data?: ITasks): void {
     const dialogRef = this.dialog.open(TaskUpdateComponent, {
       data: data,
       width: 'auto',
       height: 'auto'
     });
 
-    dialogRef.afterClosed().subscribe((result : ITasks) => {
-      if(result) {
-        let index = this.dataSource.data.indexOf(this.dataSource.data.find(a => a.id == data.id)!)
+    dialogRef.afterClosed().subscribe((result: ITasks) => {
+      console.log(result);
+      
+      if (result && result.id) {
+        let index = this.dataSource.data.indexOf(this.dataSource.data.find(a => a.id == data?.id)!)
         console.log(this.dataSource.data[index])
         this.dataSource.data[index].description = result.description,
-        this.dataSource.data[index].status = result.status,
-        this.dataSource.data[index].priority = result.priority,
-        this.dataSource.data[index].title = result.title,
-        this.dataSource.data[index].dueDate = result.dueDate
+          this.dataSource.data[index].status = result.status,
+          this.dataSource.data[index].priority = result.priority,
+          this.dataSource.data[index].title = result.title,
+          this.dataSource.data[index].dueDate = result.dueDate
+      }
+      if(result && result.id?.toString()=='') {
+        let newdata = {...result,id:Math.floor((Math.random() * 100) + 1)}
+        // this.dataSource.data = 
+        this.dataSource.data.push(newdata)
+      this.dataSource._updateChangeSubscription()
+        
       }
     });
   }

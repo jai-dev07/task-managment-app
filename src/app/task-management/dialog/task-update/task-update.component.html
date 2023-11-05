@@ -52,5 +52,6 @@
     </div>
     <div mat-dialog-actions>
         <button mat-button (click)="onNoClick()">Cancel</button>
-        <button mat-button [mat-dialog-close]="taskUpdateForm.value" cdkFocusInitial>Submit</button>
+        <button mat-button [mat-dialog-close]="taskUpdateForm.value" *ngIf="data && data.id" cdkFocusInitial [disabled]="!taskUpdateForm.valid">Submit</button>
+        <button mat-button [mat-dialog-close]="taskUpdateForm.value" *ngIf="!data || !data.id" cdkFocusInitial [disabled]="!taskUpdateForm.valid" (click)="addNew()">Create</button>
     </div>
