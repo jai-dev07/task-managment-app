@@ -1,0 +1,70 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <div class="col-2 profile border">
+                <div class="profile_picture">
+                    <div class="p-2 d-flex jsutify-content-center align-items-center">
+                        <mat-icon>account_circle</mat-icon>
+                        <label class="p-2"> Jai Jadhav</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9 content border">
+                <div class="d-flex justify-content-center align-items-center">
+                    <h3 class="text-danger">
+                        Todo
+                    </h3>
+                </div>
+                <hr class="m-auto w-80 text-center" style="width:80%">
+                <mat-table 
+                #table
+                [dataSource]="dataSource"
+                class="mat-elevation-z8"
+                cdkDropList
+                (cdkDropListDropped)="drop($event)"
+                [cdkDropListData]="dataSource"
+                [cdkDropListDisabled]="dragDisabled"
+               
+                >
+   
+                    <ng-container matColumnDef="position">
+                      <mat-header-cell *matHeaderCellDef> Sr no</mat-header-cell>
+                      <mat-cell *matCellDef="let row" (mousedown)="dragDisabled = false;"> {{row.position}} </mat-cell>
+                    </ng-container>
+                  
+  
+                    <ng-container matColumnDef="title">
+                      <mat-header-cell *matHeaderCellDef> Title</mat-header-cell>
+                      <mat-cell *matCellDef="let row"  (mousedown)="dragDisabled = false;"> {{row.title}} </mat-cell>
+                    </ng-container>
+           
+                    <ng-container matColumnDef="description">
+                      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+                      <mat-cell *matCellDef="let row"  (mousedown)="dragDisabled = false;"> {{row.description}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="status">
+                        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                        <mat-cell *matCellDef="let row"  (mousedown)="dragDisabled = false;"> {{row.status}} </mat-cell>
+                      </ng-container>
+                      <ng-container matColumnDef="priority">
+                        <mat-header-cell *matHeaderCellDef> Priority </mat-header-cell>
+                        <mat-cell *matCellDef="let row"  (mousedown)="dragDisabled = false;"> {{row.priority}} </mat-cell>
+                      </ng-container>
+                      <ng-container matColumnDef="dueDate">
+                        <mat-header-cell *matHeaderCellDef> Due date </mat-header-cell>
+                        <mat-cell *matCellDef="let row"  (mousedown)="dragDisabled = false;"> {{row.dueDate}} </mat-cell>
+                      </ng-container>
+                    <!-- Header and Row Declarations -->
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row> 
+                    <mat-row *matRowDef="let row; columns:displayedColumns;"
+                    cdkDrag
+    [cdkDragData]="row"></mat-row> 
+                    <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns">
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+                  
+                  </mat-table>
+            </div>
+
+        </div>
+    </div>
+</div>

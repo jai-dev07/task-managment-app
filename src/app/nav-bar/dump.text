@@ -1,0 +1,54 @@
+<div class="p-0">
+                <div class="text-center sbi-bg-yellow px-1">
+                  <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                      <button
+                        mat-button
+                        class="dropdown-toggle nav-link text-color"
+                        href="#"
+                        id="dropdownMenuLink"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                      Welcome
+                        <!-- <mat-icon>person</mat-icon>Welcome -->
+                        <!-- {{ isAuthenticated ? accountDetails?.name : null }} ({{ isAuthenticated ? accountDetails?.pfId : null }}) -->
+                      </button>
+                      <ul
+                        class="dropdown-menu"
+                        style="border-radius: 3px; margin-top: 7px"
+                        aria-labelledby="dropdownMenuLink"
+                      >
+                        <li class="">
+                          <a
+                            class="dropdown-item pt-2 pb-2 text-color"
+                            mat-menu-item
+                          >
+                            <strong
+                              >Role :
+                              <!-- {{
+                                accountDetails?.authorities?.join(" | ")
+                              }} -->
+                              </strong
+                            >
+                          </a>
+                        </li>
+                        <li class="border-top">
+                          <a
+                            class="dropdown-item pt-2 pb-2 text-color"
+                            mat-menu-item
+                          >
+                            <strong
+                              >Branch : 
+                              <!-- {{ accountDetails | branch }} -->
+                              </strong
+                            >
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div> 
+
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
