@@ -1,18 +1,39 @@
-.heading>h2 {
+.heading>label {
     display: block;
     text-align: end;
-
+    font-size: 18px;
+    padding-top: 16px;
+    padding-bottom: 16px;
 }
 
-.heading_data>h2 {
+.heading_data>label {
     display: block;
     text-align: start;
+    font-size: 18px;
+    padding-top: 16px;
+    padding-bottom: 16px;
 }
-
+.Low {
+    color:greenyellow;
+}
+.Medium {
+    color:orange;
+}
+.High{
+    color:red;
+}
+.Completed {
+    color:green;
+}
 .main {
     position: relative;
     width: 60%;
     height: 100vh;
     margin: auto;
-    border: 1px solid green;
+    /* border: 1px solid green; */
+}
+.card {
+    width:60%;
+    height:500px;
+    margin:auto;
 }

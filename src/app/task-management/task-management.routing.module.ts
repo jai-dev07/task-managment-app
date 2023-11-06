@@ -13,69 +13,51 @@ export class TaskViewResolve implements Resolve<ITasks | undefined> {
   constructor(
     private dataService: TasksDataService,
     private router: Router
-  ) {}
+  ) { }
 
   resolve(
     route: ActivatedRouteSnapshot
-  ): Observable<ITasks | undefined> | Observable<never> |Observable<never> {
+  ): Observable<ITasks | undefined> | Observable<never> | Observable<never> {
     const id = route.params['id'];
     if (id) {
       return this.dataService.getAlltasks().pipe(
-        map( tasks1 => {
-          console.log(tasks1);
-          
-          return tasks1.find(task =>{
+        map(tasks => {
+          return tasks.find(task => {
             return task.id == id
           })
         })
       )
-        // map((plan: ITasks) => {
-        //   // if (plan) {
-        //     return  plan.find(res =>{
-        //       res.id == id
-        //       return of(obj);
-        //     })
-        //   })
-            
-          // } 
-          // else {
-          //   this.router.navigate(['404']);
-          //   return EMPTY;
-          // // }
-        
-      // );
+      
     }
     this.router.navigate(['404']);
     return EMPTY;
   }
 }
 const routes: Routes = [
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+
+  {
+    path: 'dashboard',
+    component: DashboardComponent
+  },
+
+  {
+    path: 'view/:id',
+    component: TaskViewComponent,
+    resolve:
     {
-      path:'',  
-      component:DashboardComponent
-    },
-    {
-      path:'dashboard',  
-      component:DashboardComponent
-    },
-   
-    {
-      path:'view/:id',
-      component:TaskViewComponent,
-      resolve : 
-      {
-        tasksData : TaskViewResolve
-      }
-    },
-    {
-      path:'update',
-      component:TaskUpdateComponent
+      tasksData: TaskViewResolve
     }
+  },
+  {
+    path: 'update',
+    component: TaskUpdateComponent
+  }
 ]
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
-  })
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
 
 export class TaskManagementRoutingModule {
 

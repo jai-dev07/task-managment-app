@@ -137,7 +137,6 @@ export class DashboardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: ITasks) => {
       console.log(result);
-      
       if (result && result.id) {
         let index = this.dataSource.data.indexOf(this.dataSource.data.find(a => a.id == data?.id)!)
         console.log(this.dataSource.data[index])
@@ -152,7 +151,6 @@ export class DashboardComponent implements OnInit {
         // this.dataSource.data = 
         this.dataSource.data.push(newdata)
       this.dataSource._updateChangeSubscription()
-        
       }
     });
   }

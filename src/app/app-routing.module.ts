@@ -5,12 +5,8 @@ import { AuthGuard } from './shared/auth/authguard';
 
 const routes: Routes = [
   {
-    path:'login',
-    component: LoginComponent
-  },
-  {
   path:'',
-  canActivate :[AuthGuard],
+  // canActivate :[AuthGuard],
   loadChildren:()=> import('./task-management/task-management.module').
   then(m => m.TaskManagementModule)
   }

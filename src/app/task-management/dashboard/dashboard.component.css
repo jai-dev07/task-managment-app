@@ -7,3 +7,9 @@
 mat-header-cell, mat-cell {
     justify-content: center;
   }
+  mat-header-cell{
+    /* font-size:23px;
+     */
+     font-size: 15px;
+     font-weight: 700;
+  }

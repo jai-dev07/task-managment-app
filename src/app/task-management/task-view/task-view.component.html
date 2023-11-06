@@ -1,21 +1,24 @@
-<div class="row border" style="position: relative;">
+<div class="row" style="position: relative;">
+    <mat-card class="card">
     <div class="col-12 d-flex justify-content-center main" *ngIf="taskDetail">
         <div class="col-6 heading" style="white-space: pre" >
-            <h2> Title : </h2>
-            <h2> Description : </h2>
-            <h2> Status : </h2>
-            <h2> Priority : </h2>
-            <h2> Due date : </h2>
+            <label> Title : </label>
+            <label> Description : </label>
+            <label> Status : </label>
+            <label> Priority : </label>
+            <label> Due date : </label>
         </div>
         <div class="col-6 heading_data" >
-            <h2> {{taskDetail.title}}</h2>
-            <h2> {{taskDetail.description}}</h2>
-            <h2> {{taskDetail.status}}</h2>
-            <h2> {{taskDetail.priority}}</h2>
-            <h2> {{taskDetail.dueDate}}</h2>
+            <label> {{taskDetail.title}}</label>
+            <label> {{taskDetail.description}}</label>
+            <label [ngClass]='[taskDetail.status]'> {{taskDetail.status}}</label>
+            <label [ngClass]='[taskDetail.priority]'> {{taskDetail.priority}}</label>
+            <label> {{taskDetail.dueDate}}</label>
         </div>
     </div>
+
     <div *ngIf="!taskDetail">
         NO DATA FOUND
     </div>
+</mat-card>
 </div>
