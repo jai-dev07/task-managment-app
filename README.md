@@ -39,7 +39,8 @@ Open your web browser and navigate to http://localhost:4200 to access the TODO a
 
 Usage
 Add a new task by clicking the "Add Task" button.
-Edit a task by clicking the "Edit" button on the table row.
+Edit a task by clicking the "Edit" button.
+View the task details clicking the "view/eye" button
 Mark a task as completed by checking the check icon.
 Reorder the tasks by dragging in the table.
 Delete a task by clicking the "Delete" button on the task card.
